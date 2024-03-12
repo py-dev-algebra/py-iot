@@ -11,7 +11,7 @@ def get_led_matrix_picture(color_up, color_down, humidity):
     led_matrix = []
     
     for i in range(64):
-        if i < round(64/100, 2) * humidity:
+        if i < int(round(64/100, 2) * humidity):
             led_matrix.append(color_up)
         else:
             led_matrix.append(color_down)
@@ -32,3 +32,16 @@ while True:
 
     hat.set_pixels(led_matrix)
     time.sleep(1)
+
+
+# Verzija kolegice Nikoline
+# while True:
+#     air_humidity = round(hat.get_humidity(), 2)
+#     matrix_humidity = int(air_humidity / 100 * 64)
+#     pixels = []
+#     for i in range(64):
+#         if i < matrix_humidity:
+#             pixels.append([0, 255, 0])
+#         else:
+#             pixels.append([0, 0, 0])
+#     hat.set_pixels(pixels) 
